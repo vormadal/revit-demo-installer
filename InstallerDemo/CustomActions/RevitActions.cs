@@ -10,9 +10,11 @@ namespace CustomActions
         [CustomAction]
         public static ActionResult CreateManifest(Session session)
         {
+            var installationFolder = session["INSTALLFOLDER"];
             session.Log("Begin CreateManifest");
+            var str = $"{session["INSTALLFOLDER"]}; {session["INSTALLDIR"]}";
             //TODO write manifest to file here
-            File.WriteAllText(FileName, "hello?");
+            File.WriteAllText(FileName, str);
 
             return ActionResult.Success;
         }
