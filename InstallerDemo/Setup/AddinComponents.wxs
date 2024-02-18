@@ -1,0 +1,15 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="AddinComponents" Directory="INSTALLFOLDER">
+      <Component>
+        <!--These are the files that are to be installed-->
+        <File Source="MyCoolProgram.exe" />
+      </Component>
+    </ComponentGroup>
+    <!--BinaryRef value is the Id of <Binary> below-->
+    <!--DllEntry is the method name inside the project referenced by the <Binary>-->
+    <CustomAction Id="CreateManifestAction" BinaryRef="CustomActionBinary" DllEntry="CreateManifest" />
+    <CustomAction Id="DeleteManifestAction" BinaryRef="CustomActionBinary" DllEntry="DeleteManifest" />
+    <Binary Id="CustomActionBinary" SourceFile="CustomActions.CA.dll" />
+  </Fragment>
+</Wix>

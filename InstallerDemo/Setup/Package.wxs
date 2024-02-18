@@ -1,0 +1,22 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="My Cool App" Manufacturer="TODO Manufacturer" Version="1.0.0.0" UpgradeCode="df569ab4-f979-4722-83cb-1dacc397172c">
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <!--<Property Id="RevitManifestFolder" Value="test1" />-->
+    <InstallExecuteSequence>
+      <!--< inspiration from here https://www.advancedinstaller.com/versus/wix-toolset/add-custom-actions.html-->
+      <!--The 'Action' value is the ID of the <CustomAction> in ExampleComponents-->
+      <Custom Action="CreateManifestAction" Before="InstallFinalize" Condition="NOT Installed"></Custom>
+      <Custom Action="DeleteManifestAction" Before="CreateFolders" 
+              Condition="Installed AND NOT UPGRADINGPRODUCTCODE AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; )"
+              ></Custom>
+      <!--<Custom Action="CustomAction" Before="CreateFolders">Installed AND ( REMOVE = "ALL" OR AI_INSTALL_MODE = "Remove" ) AND NOT UPGRADINGPRODUCTCODE</Custom>-->
+
+    </InstallExecuteSequence>
+    <Feature Id="Main">
+      <!--Reference to the AddinComponents configuration file-->
+      <ComponentGroupRef Id="AddinComponents" />
+    </Feature>
+
+  </Package>
+
+</Wix>

@@ -1,0 +1,11 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLFOLDER" Name="!(bind.Property.Manufacturer) !(bind.Property.ProductName)" />
+    </StandardDirectory>
+    <!--If you need to install files in other directories other than above program folder see below for an example-->
+    <!--<StandardDirectory Id="AppDataFolder">
+      <Directory Id="REVITFOLDER" Name="!(bind.Property.RevitManifestFolder)" />
+    </StandardDirectory>-->
+  </Fragment>
+</Wix>
